@@ -43,30 +43,30 @@ public class PlayerScript : MonoBehaviour
 
     private void move(){
         // 前後左右移動
-        if (Input.GetKey(KeyCode.JoystickButton3))
+        if (Input.GetKey(KeyCode.JoystickButton3) || Input.GetKey(KeyCode.W))
         {
             transform.position += transform.forward * speed * Time.deltaTime;
         }
-        if(Input.GetKey(KeyCode.JoystickButton0))
+        if(Input.GetKey(KeyCode.JoystickButton0) || Input.GetKey(KeyCode.S))
         {
             transform.position += -transform.forward * speed * Time.deltaTime;
         }
-        if(Input.GetKey(KeyCode.JoystickButton2))
+        if(Input.GetKey(KeyCode.JoystickButton2)  || Input.GetKey(KeyCode.A))
         {
             transform.Rotate(Vector3.up, -rotationSpeed * Time.deltaTime);
         }
-        if(Input.GetKey(KeyCode.JoystickButton1))
+        if(Input.GetKey(KeyCode.JoystickButton1) || Input.GetKey(KeyCode.D))
         {
             transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
         }
 
         // ジャンプ
-        if(Input.GetKeyDown(KeyCode.JoystickButton5) && isGrounded){
+        if(Input.GetKeyDown(KeyCode.JoystickButton5) && isGrounded || Input.GetKeyDown(KeyCode.Space) && isGrounded){
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
         }
 
         // ダッシュ
-        if(Input.GetKey(KeyCode.JoystickButton4)){
+        if(Input.GetKey(KeyCode.JoystickButton4) || Input.GetKey(KeyCode.LeftShift)){
             Debug.Log("Pusg");
             speed = nomalSpeed * 1.5f;
         }else {

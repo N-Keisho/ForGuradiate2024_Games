@@ -27,31 +27,32 @@ public class StoryScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ok && Input.GetKeyDown(KeyCode.JoystickButton0))
+        if (ok && Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.Space))
         {
             i++;
             if (i == serifs.Length)
             {
                 LoadStage();
             }
-
-            serifs[i - 1].SetActive(false);
-            serifs[i].SetActive(true);
-            
-        }
-
-        if (Input.anyKey)
-        {
-            foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
+            else
             {
-                if (Input.GetKeyDown(code))
-                {
-                    //èàóùÇèëÇ≠
-                    Debug.Log(code);
-                    break;
-                }
-            }
+                serifs[i - 1].SetActive(false);
+                serifs[i].SetActive(true);
+            }            
         }
+
+        // if (Input.anyKey)
+        // {
+        //     foreach (KeyCode code in Enum.GetValues(typeof(KeyCode)))
+        //     {
+        //         if (Input.GetKeyDown(code))
+        //         {
+        //             //ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
+        //             Debug.Log(code);
+        //             break;
+        //         }
+        //     }
+        // }
     }
 
     
@@ -61,8 +62,5 @@ public class StoryScript : MonoBehaviour
         yield return new WaitForSeconds(1);
         serifs[0].SetActive(true);
         ok = true;
-
-
-        
     }
 }
